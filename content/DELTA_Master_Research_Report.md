@@ -1,13 +1,22 @@
 ---
-title: "Nghiên Cứu Thực Nghiệm: Phục Hồi Sinh Học"
+title: "DELTA của Dean Ho: Từ bằng chứng khoa học đến tuyên bố truyền thông"
+aliases:
+  - DELTA Master Research Report
+type: source
+tags:
+  - sức-khỏe
+  - tuổi-thọ-khỏe-mạnh
+  - dấu-ấn-sinh-học
+  - y-học-số
+  - nghiên-cứu-n-of-1
+  - kiểm-toán-nguồn
 publish: true
 ---
 
-# BÁO CÁO NGHIÊN CỨU TỔNG HỢP TOÀN DIỆN (MASTER REPORT)
 
 # NGHIÊN CỨU TỰ THỰC NGHIỆM DELTA CỦA DEAN HO: TỪ BẰNG CHỨNG KHOA HỌC ĐẾN TUYÊN BỐ TRUYỀN THÔNG
 
-**Bản hợp nhất tối ưu hóa — Kiểm toán nguồn, Đối chiếu đa tầng và Đánh giá y văn độc lập**  
+**Kiểm toán nguồn, Đối chiếu đa tầng và Đánh giá y văn độc lập**  
 *Cập nhật dữ liệu khoa học và truyền thông tính đến tháng 08/2026*
 
 ---
