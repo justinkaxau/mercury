@@ -111,9 +111,9 @@ plugins:
   - source: "@quartz-community/quartz-fonts"
     enabled: false
   - source: "@quartz-themes/core"
-    enabled: false
+    enabled: true
     options:
-      theme: default
+      theme: minimal
       mode: both
   - source: "@quartz-community/remove-draft"
     enabled: true
