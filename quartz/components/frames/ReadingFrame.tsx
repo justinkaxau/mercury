@@ -185,7 +185,7 @@ export const ReadingFrame: PageFrame = {
   z-index: 30;
   display: flex;
   width: min(24rem, calc(100vw - 1.5rem));
-  height: auto;
+  height: calc(100vh - 5rem);
   box-sizing: border-box;
   padding: 1.25rem;
   overflow-y: auto;
@@ -276,6 +276,7 @@ export const ReadingFrame: PageFrame = {
 
   .page[data-frame="reading"] .reading-panel {
     top: 3.75rem;
+    height: calc(100vh - 4.5rem);
   }
 
   .page[data-frame="reading"] .reading-center {
