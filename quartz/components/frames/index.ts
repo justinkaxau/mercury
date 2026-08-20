@@ -2,14 +2,12 @@ import { PageFrame } from "./types"
 import { DefaultFrame } from "./DefaultFrame"
 import { FullWidthFrame } from "./FullWidthFrame"
 import { MinimalFrame } from "./MinimalFrame"
-import { ReadingFrame } from "./ReadingFrame"
 import { frameRegistry } from "./registry"
 
 export type { PageFrame, PageFrameProps } from "./types"
 export { DefaultFrame } from "./DefaultFrame"
 export { FullWidthFrame } from "./FullWidthFrame"
 export { MinimalFrame } from "./MinimalFrame"
-export { ReadingFrame } from "./ReadingFrame"
 export { frameRegistry } from "./registry"
 export type { RegisteredFrame } from "./registry"
 
@@ -24,7 +22,6 @@ const builtinFrames: Record<string, PageFrame> = {
   default: DefaultFrame,
   "full-width": FullWidthFrame,
   minimal: MinimalFrame,
-  reading: ReadingFrame,
 }
 
 /**
