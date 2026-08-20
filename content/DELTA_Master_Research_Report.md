@@ -1,15 +1,4 @@
 ---
-title: "DELTA của Dean Ho: Từ bằng chứng khoa học đến tuyên bố truyền thông"
-aliases:
-  - DELTA Master Research Report
-type: source
-tags:
-  - sức-khỏe
-  - tuổi-thọ-khỏe-mạnh
-  - dấu-ấn-sinh-học
-  - y-học-số
-  - nghiên-cứu-n-of-1
-  - kiểm-toán-nguồn
 publish: true
 ---
 
@@ -23,7 +12,7 @@ publish: true
 
 ## 1\. TÓM TẮT ĐIỀU HÀNH (EXECUTIVE SUMMARY)
 
-Báo cáo này là công trình tổng hợp và hợp nhất cao nhất từ các nghiên cứu kiểm toán độc lập về thử nghiệm tự thực nghiệm N-of-1 mang tên **DELTA** do Giáo sư Dean Ho (Viện Y học Kỹ thuật số WisDM, Đại học Quốc gia Singapore \- NUS) thực hiện. Báo cáo đối chiếu trực tiếp ba tầng nguồn tài liệu theo thứ bậc bằng chứng nghiêm ngặt:
+Báo cáo này là công trình tổng hợp từ các nghiên cứu kiểm toán độc lập về thử nghiệm tự thực nghiệm N-of-1 mang tên **DELTA** do Giáo sư Dean Ho (Viện Y học Kỹ thuật số WisDM, Đại học Quốc gia Singapore \- NUS) thực hiện. Báo cáo đối chiếu trực tiếp ba tầng nguồn tài liệu theo thứ bậc bằng chứng nghiêm ngặt:
 
 1. **Nguồn A — Bản ghi khoa học sơ cấp (Primary Scientific Record)**: Bài báo bình duyệt (*peer-reviewed*) trên tạp chí *PLOS ONE* (Wang et al., công bố ngày 12/08/2026, DOI: [10.1371/journal.pone.0354234](https://doi.org/10.1371/journal.pone.0354234)), kèm lịch sử phản biện (*peer-review history*) và tập dữ liệu bổ sung (*Supporting Data*).  
 2. **Nguồn B — Truyền thông thể chế (Institutional Communication)**: Thông cáo báo chí trực tuyến và bản PDF chính thức của Trường Y Yong Loo Lin, Đại học Quốc gia Singapore \- NUS Medicine (phát hành ngày 13/08/2026, [NUS Medicine News](https://medicine.nus.edu.sg/news/nus-medicine-professor-becomes-his-own-test-subject-in-longevity-study-biological-age-found-to-be-15-years-younger/) và [Bản Press Release PDF](https://medicine.nus.edu.sg/wp-content/uploads/2026/08/2026-08-13-Press-Release-DELTA_final-for-media.pdf)).  
