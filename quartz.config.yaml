@@ -273,10 +273,6 @@ plugins:
       darkMode: auto
       exportPadding: 20
     order: 50
-  - source: github:quartz-community/explicit-publish
-    enabled: false
-    options: {}
-    order: 50
 layout:
   groups:
     toolbar:
