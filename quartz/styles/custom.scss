@@ -1,3 +1,42 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+.table-container {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+
+  & > table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+    border-left: none !important;
+    border-right: none !important;
+
+    th,
+    td {
+      padding: 0.3rem 0.5rem !important;
+      line-height: 1.5;
+      border-left: none !important;
+      border-right: none !important;
+    }
+
+    th {
+      border-bottom: 2px solid var(--lightgray);
+      text-align: left;
+    }
+
+    td {
+      border-bottom: 1px solid var(--lightgray);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+blockquote {
+  padding-left: 0.65rem !important;
+  margin: 1.2rem 0;
+}

@@ -72,7 +72,7 @@ Cả Trung Quốc và Singapore đều tìm cách khai thác sức mạnh kinh t
 - **Ba ranh giới đỏ:** Không đụng chạm sắc tộc/tôn giáo, không xúc phạm tính chính danh của lãnh đạo, và ưu tiên trật tự/thịnh vượng trên tự do cá nhân.
 - **Sự kiện Yale-NUS (2013–2025):** Mô hình hợp tác đỉnh cao kiểu Mỹ phải sáp nhập và xóa tên sau 12 năm hoạt động khi các tranh luận của sinh viên (về quyền bình đẳng, tự do biểu tình, bất đồng chính kiến) liên tục chạm vào lằn ranh đỏ thể chế.
 
-> [!NOTE] So sánh cốt lõi giữa Trung Quốc và Singapore
+> [!INFO] So sánh cốt lõi giữa Trung Quốc và Singapore
 > - **Trung Quốc:** Xem khai phóng là hiểm họa tư tưởng; tìm cách bóc tách lấy vỏ kỹ thuật và tiêu diệt phần hồn tự do tư tưởng. Chấp nhận không có Einstein để bảo toàn tuyệt đối an ninh thể chế.
 > - **Singapore:** Xem khai phóng là món hàng cao cấp có giá trị gia tăng kinh tế; xây dựng hệ thống pháp trị nghiêm ngặt xung quanh để ngăn món hàng đó đe dọa sự ổn định nhà nước.
 
@@ -81,10 +81,10 @@ Cả Trung Quốc và Singapore đều tìm cách khai thác sức mạnh kinh t
 ## 5. Triết học khoa học và Nghịch lý Einstein
 
 ### Tiêu chí bác bỏ của Karl Popper
-Theo [[Karl Popper]], ranh giới giữa **khoa học** và **ngụy khoa học / giáo điều** nằm ở khả năng bị bác bỏ (*Falsifiability*):
+Theo Karl Poppe, ranh giới giữa **khoa học** và **ngụy khoa học / giáo điều** nằm ở khả năng bị bác bỏ.
 - Tri thức khoa học chỉ mang tính chân lý tạm thời; luôn mở ra khả năng bị kiểm chứng, phản biện và thay thế bởi lý thuyết tốt hơn (như Thuyết Tương đối của Einstein mở rộng và thay thế cơ học cổ điển của Newton).
 - Mọi hệ thống tri thức cấm tranh luận, tự nhận luôn luôn đúng sẽ tự tước bỏ tư cách khoa học để trở thành giáo điều chính trị hoặc niềm tin tôn giáo.
-- Bắt buộc chấp nhận luận điểm chỉ vì uy quyền của người phát ngôn là phạm vào ngụy biện lập luận từ thẩm quyền (*Argument from authority*).
+- Bắt buộc chấp nhận luận điểm chỉ vì uy quyền của người phát ngôn là phạm vào ngụy biện lập luận từ thẩm quyền.
 
 ### Nghịch lý Einstein: Vì sao thể chế kiểm soát tư tưởng không thể sinh ra thiên tài đột phá?
 
