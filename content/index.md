@@ -3,7 +3,7 @@ title: Home
 publish: true
 ---
 
-# Mercury
+# Kho của Dượng Tin
 
-Welcome to my digital chamber.
+Post linh ta linh tinh, không theo một chủ đề nào cả.
 
