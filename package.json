@@ -19,7 +19,7 @@
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
-    "prebuild": "npm run install-plugins"
+    "prebuild": "npm run install-plugins && node patch-mermaid.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
@@ -68,7 +68,7 @@
     "@quartz-community/hard-line-breaks": "^0.1.0",
     "@quartz-community/latex": "^0.1.0",
     "@quartz-community/note-properties": "^0.1.0",
-    "@quartz-community/obsidian-flavored-markdown": "^0.1.1",
+    "@quartz-community/obsidian-flavored-markdown": "^0.1.2",
     "@quartz-community/og-image": "^0.1.1",
     "@quartz-community/ox-hugo": "^0.1.0",
     "@quartz-community/page-title": "^0.1.0",
