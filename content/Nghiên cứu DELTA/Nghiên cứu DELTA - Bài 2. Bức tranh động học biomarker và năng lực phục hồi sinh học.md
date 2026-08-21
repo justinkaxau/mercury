@@ -14,9 +14,9 @@ Các chỉ số tĩnh này bỏ lỡ khả năng thích ứng động của cơ 
 
 ```mermaid
 flowchart TD
-    A["Tác nhân gây stress hệ thống<br><i>(Nhịn ăn 48h / Vận động nặng)</i>"] --> B["Kích hoạt phản ứng chuyển hóa & sinh hóa trước stress"]
-    B --> C["Theo dõi quỹ đạo biến đổi biomarker<br>& động học hồi phục"]
-    C --> D["Định lượng năng lực phục hồi sinh học<br><b>(Biological Resilience Indicator - RI)</b>"]
+    A["Tác nhân gây stress hệ thống\n(Nhịn ăn 48h / Vận động nặng)"] --> B["Kích hoạt phản ứng chuyển hóa & sinh hóa trước stress"]
+    B --> C["Theo dõi quỹ đạo biến đổi biomarker\n& động học hồi phục"]
+    C --> D["Định lượng năng lực phục hồi sinh học\n(Biological Resilience Indicator - RI)"]
 ```
 
 ---
@@ -57,8 +57,8 @@ Nghiên cứu khảo sát các chỉ số máu tại 3 trạng thái: trước n
 
 ```mermaid
 flowchart LR
-    A["<b>PRE48</b><br>Mức nền tối ưu"] -->|"Nhịn ăn 48h"| B["<b>POST48</b><br>Biến động sinh lý"]
-    B -->|"Ăn lại 2–3 ngày"| C["<b>POST-RF</b><br>Hồi phục mức nền"]
+    A["PRE48\nMức nền tối ưu"] -->|"Nhịn ăn 48h"| B["POST48\nBiến động sinh lý"]
+    B -->|"Ăn lại 2–3 ngày"| C["POST-RF\nHồi phục mức nền"]
 ```
 
 ### Apolipoprotein (ApoB, ApoA và tỷ lệ ApoB/ApoA)
