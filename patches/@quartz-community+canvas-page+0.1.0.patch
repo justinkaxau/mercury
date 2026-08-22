@@ -1,8 +1,8 @@
 diff --git a/node_modules/@quartz-community/canvas-page/dist/components/index.js b/node_modules/@quartz-community/canvas-page/dist/components/index.js
-index 3f1994e..723b93f 100644
+index 3f1994e..399c907 100644
 --- a/node_modules/@quartz-community/canvas-page/dist/components/index.js
 +++ b/node_modules/@quartz-community/canvas-page/dist/components/index.js
-@@ -17,8 +17,8 @@ function simplifySlug(fp) {
+@@ -17,8 +17,19 @@ function simplifySlug(fp) {
  function slugifyFilePath(fp, excludeExt) {
    fp = stripSlashes(fp);
    const ext = getFileExtension(fp);
@@ -10,10 +10,21 @@ index 3f1994e..723b93f 100644
 -  const finalExt = [".md", ".html", void 0].includes(ext) ? "" : ext;
 +  const withoutFileExt = fp.replace(new RegExp((ext ? ("\\" + ext) : "") + "$"), "");
 +  const finalExt = excludeExt || [".md", ".html", void 0].includes(ext) ? "" : ext;
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
    let slug2 = _sluggify(withoutFileExt);
    if (endsWith(slug2, "_index")) {
      slug2 = slug2.replace(/_index$/, "index");
-@@ -77,9 +77,24 @@ function resolveRelative(current, target) {
+@@ -77,9 +88,24 @@ function resolveRelative(current, target) {
    const res = joinSegments(pathToRoot(current), simplifySlug(target));
    return res;
  }
@@ -42,10 +53,10 @@ index 3f1994e..723b93f 100644
  }
  function normalizeHastElement(rawEl, curBase, newBase) {
 diff --git a/node_modules/@quartz-community/canvas-page/dist/index.js b/node_modules/@quartz-community/canvas-page/dist/index.js
-index e8e5f84..b1b7f33 100644
+index e8e5f84..0806efe 100644
 --- a/node_modules/@quartz-community/canvas-page/dist/index.js
 +++ b/node_modules/@quartz-community/canvas-page/dist/index.js
-@@ -20,8 +20,8 @@ function simplifySlug(fp) {
+@@ -20,8 +20,19 @@ function simplifySlug(fp) {
  function slugifyFilePath(fp, excludeExt) {
    fp = stripSlashes(fp);
    const ext = getFileExtension(fp);
@@ -53,10 +64,21 @@ index e8e5f84..b1b7f33 100644
 -  const finalExt = [".md", ".html", void 0].includes(ext) ? "" : ext;
 +  const withoutFileExt = fp.replace(new RegExp((ext ? ("\\" + ext) : "") + "$"), "");
 +  const finalExt = excludeExt || [".md", ".html", void 0].includes(ext) ? "" : ext;
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
    let slug2 = _sluggify(withoutFileExt);
    if (endsWith(slug2, "_index")) {
      slug2 = slug2.replace(/_index$/, "index");
-@@ -80,9 +80,24 @@ function resolveRelative(current, target) {
+@@ -80,9 +91,24 @@ function resolveRelative(current, target) {
    const res = joinSegments(pathToRoot(current), simplifySlug(target));
    return res;
  }

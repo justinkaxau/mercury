@@ -1,8 +1,8 @@
 diff --git a/node_modules/@quartz-community/crawl-links/dist/index.js b/node_modules/@quartz-community/crawl-links/dist/index.js
-index 5005175..ad13428 100644
+index 5005175..21aaa04 100644
 --- a/node_modules/@quartz-community/crawl-links/dist/index.js
 +++ b/node_modules/@quartz-community/crawl-links/dist/index.js
-@@ -17,8 +17,8 @@ function simplifySlug(fp) {
+@@ -17,8 +17,19 @@ function simplifySlug(fp) {
  function slugifyFilePath(fp, excludeExt) {
    fp = stripSlashes(fp);
    const ext = getFileExtension(fp);
@@ -10,10 +10,21 @@ index 5005175..ad13428 100644
 -  const finalExt = [".md", ".html", void 0].includes(ext) ? "" : ext;
 +  const withoutFileExt = fp.replace(new RegExp((ext ? ("\\" + ext) : "") + "$"), "");
 +  const finalExt = excludeExt || [".md", ".html", void 0].includes(ext) ? "" : ext;
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
    let slug2 = _sluggify(withoutFileExt);
    if (endsWith(slug2, "_index")) {
      slug2 = slug2.replace(/_index$/, "index");
-@@ -140,9 +140,24 @@ function transformLink(src, target, opts) {
+@@ -140,9 +151,24 @@ function transformLink(src, target, opts) {
      return joinSegments(pathToRoot(effectiveSrc), canonicalSlug) + folderTail;
    }
  }

@@ -1,8 +1,8 @@
 diff --git a/node_modules/@quartz-community/utils/dist/index.js b/node_modules/@quartz-community/utils/dist/index.js
-index 7024f8d..659d770 100644
+index 7024f8d..1e97e51 100644
 --- a/node_modules/@quartz-community/utils/dist/index.js
 +++ b/node_modules/@quartz-community/utils/dist/index.js
-@@ -48,18 +48,18 @@ function getFullSlugFromUrl() {
+@@ -48,18 +48,29 @@ function getFullSlugFromUrl() {
  function slugifyFilePath(fp, excludeExt) {
    fp = stripSlashes(fp);
    const ext = getFileExtension(fp);
@@ -12,6 +12,17 @@ index 7024f8d..659d770 100644
 -  let slug = _sluggify(withoutFileExt);
 -  if (endsWith(slug, "_index")) {
 -    slug = slug.replace(/_index$/, "index");
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
 +  let slug2 = _sluggify(withoutFileExt);
 +  if (endsWith(slug2, "_index")) {
 +    slug2 = slug2.replace(/_index$/, "index");
@@ -28,7 +39,7 @@ index 7024f8d..659d770 100644
  }
  function joinSegments(...args) {
    if (args.length === 0) {
-@@ -197,7 +197,22 @@ function transformLink(src, target, opts) {
+@@ -197,7 +208,22 @@ function transformLink(src, target, opts) {
  }
  function slugifyPath(s) {
    return s.split("/").map(
@@ -53,10 +64,10 @@ index 7024f8d..659d770 100644
  }
  function normalizeHastElement(rawEl, curBase, newBase) {
 diff --git a/node_modules/@quartz-community/utils/dist/path.js b/node_modules/@quartz-community/utils/dist/path.js
-index 6b3bb3e..c6c7d96 100644
+index 6b3bb3e..d344e97 100644
 --- a/node_modules/@quartz-community/utils/dist/path.js
 +++ b/node_modules/@quartz-community/utils/dist/path.js
-@@ -45,18 +45,18 @@ function getFullSlugFromUrl() {
+@@ -45,18 +45,29 @@ function getFullSlugFromUrl() {
  function slugifyFilePath(fp, excludeExt) {
    fp = stripSlashes(fp);
    const ext = getFileExtension(fp);
@@ -66,6 +77,17 @@ index 6b3bb3e..c6c7d96 100644
 -  let slug = _sluggify(withoutFileExt);
 -  if (endsWith(slug, "_index")) {
 -    slug = slug.replace(/_index$/, "index");
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
 +  let slug2 = _sluggify(withoutFileExt);
 +  if (endsWith(slug2, "_index")) {
 +    slug2 = slug2.replace(/_index$/, "index");
@@ -82,7 +104,7 @@ index 6b3bb3e..c6c7d96 100644
  }
  function joinSegments(...args) {
    if (args.length === 0) {
-@@ -194,7 +194,22 @@ function transformLink(src, target, opts) {
+@@ -194,7 +205,22 @@ function transformLink(src, target, opts) {
  }
  function slugifyPath(s) {
    return s.split("/").map(

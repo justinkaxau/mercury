@@ -1,17 +1,29 @@
 diff --git a/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js b/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js
-index 708e6eb..fa51cba 100644
+index 708e6eb..6e5311d 100644
 --- a/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js
 +++ b/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js
-@@ -23013,7 +23013,7 @@ function empty4(value) {
+@@ -23013,8 +23013,19 @@ function empty4(value) {
  function slugifyFilePath(fp, excludeExt) {
    fp = stripSlashes(fp);
    const ext = getFileExtension(fp);
 -  const withoutFileExt = fp.replace(new RegExp(ext + "$"), "");
 +  const withoutFileExt = fp.replace(new RegExp((ext ? ("\\" + ext) : "") + "$"), "");
    const finalExt = excludeExt || [".md", ".html", void 0].includes(ext) ? "" : ext;
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
    let slug2 = _sluggify(withoutFileExt);
    if (endsWith(slug2, "_index")) {
-@@ -23051,9 +23051,24 @@ function pathToRoot(slug2) {
+     slug2 = slug2.replace(/_index$/, "index");
+@@ -23051,9 +23062,24 @@ function pathToRoot(slug2) {
  function slugTag(tag) {
    return tag.split("/").map((tagSegment) => _sluggify(tagSegment)).join("/");
  }
@@ -39,7 +51,7 @@ index 708e6eb..fa51cba 100644
    ).join("/").replace(/\/$/, "");
  }
  function _sluggify(s4) {
-@@ -23069,8 +23084,7 @@ var callout_inline_default = 'function n(){let t=this.parentElement;t.classList.
+@@ -23069,8 +23095,7 @@ var callout_inline_default = 'function n(){let t=this.parentElement;t.classList.
  // src/scripts/checkbox.inline.ts
  var checkbox_inline_default = 'function c(e){return e.document.body.dataset.slug}var d=e=>`${c(window)}-checkbox-${e}`,l=()=>{document.querySelectorAll("input.checkbox-toggle").forEach((t,s)=>{let n=d(s),o=u=>{let r=u.target?.checked?"true":"false";localStorage.setItem(n,r)};t.addEventListener("change",o),window.addCleanup(()=>t.removeEventListener("change",o)),localStorage.getItem(n)==="true"&&(t.checked=!0)})};document.addEventListener("nav",l);document.addEventListener("render",l);\n';
  
