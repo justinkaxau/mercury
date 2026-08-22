@@ -106,4 +106,46 @@ article {
       box-sizing: border-box !important;
     }
   }
+
+  // 4. Khung search trên mobile chỉ hiện icon gọn gàng
+  .search {
+    min-width: auto !important;
+    max-width: none !important;
+    flex-grow: 0 !important;
+
+    & > .search-button {
+      border: none !important;
+      padding: 0 !important;
+      width: 20px !important;
+      height: 32px !important;
+      background: transparent !important;
+      justify-content: center;
+
+      & > p {
+        display: none !important;
+      }
+
+      & > svg {
+        margin: 0 !important;
+        width: 19px !important;
+        height: 19px !important;
+        opacity: 0.65 !important;
+        transition: opacity 0.2s ease;
+
+        .search-path {
+          stroke: var(--darkgray) !important;
+          stroke-width: 1.2px !important;
+        }
+      }
+
+      &:hover > svg,
+      &:focus > svg {
+        opacity: 1 !important;
+      }
+    }
+  }
+
+  .page > #quartz-body .sidebar.left .flex-component > div:has(.search) {
+    flex-grow: 0 !important;
+  }
 }
