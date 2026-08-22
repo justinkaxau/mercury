@@ -1,0 +1,27 @@
+diff --git a/node_modules/@quartz-community/alias-redirects/dist/index.js b/node_modules/@quartz-community/alias-redirects/dist/index.js
+index 7dc49af..ea0a225 100644
+--- a/node_modules/@quartz-community/alias-redirects/dist/index.js
++++ b/node_modules/@quartz-community/alias-redirects/dist/index.js
+@@ -93,7 +93,21 @@ function redirectHtml(title, redirectUrl) {
+ }
+ function slugifyPathPreserveCase(s2) {
+   return s2.split("/").map(
+-    (segment) => segment.replace(/\s/g, "-").replace(/&/g, "-and-").replace(/%/g, "-percent").replace(/\?/g, "").replace(/#/g, "")
++    (segment) => segment
++      .normalize("NFD")
++      .replace(/[\u0300-\u036f]/g, "")
++      .replace(/[đĐ]/g, "d")
++      .replace(/&/g, "-and-")
++      .replace(/%/g, "-percent")
++      .replace(/\?/g, "")
++      .replace(/#/g, "")
++      .replace(/[<>:\"|*]/g, "")
++      .replace(/\s+/g, "-")
++      .replace(/[-_.]+/g, (match) => {
++        if (match.includes("-") || match.includes("_")) return "-";
++        return match;
++      })
++      .replace(/^-+|-+$/g, "")
+   ).join("/").replace(/\/$/, "");
+ }
+ function slugifyFilePathPreserveCase(fp) {

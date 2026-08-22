@@ -1,8 +1,36 @@
 diff --git a/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js b/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js
-index 708e6eb..605d736 100644
+index 708e6eb..5036207 100644
 --- a/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js
 +++ b/node_modules/@quartz-community/obsidian-flavored-markdown/dist/index.js
-@@ -23069,8 +23069,7 @@ var callout_inline_default = 'function n(){let t=this.parentElement;t.classList.
+@@ -23051,9 +23051,24 @@ function pathToRoot(slug2) {
+ function slugTag(tag) {
+   return tag.split("/").map((tagSegment) => _sluggify(tagSegment)).join("/");
+ }
+-function slugifyPath(s4) {
+-  return s4.split("/").map(
+-    (segment) => segment.replace(/\s/g, "-").replace(/&/g, "-and-").replace(/%/g, "-percent").replace(/\?/g, "").replace(/#/g, "").replace(/[<>:"|*]/g, "").toLowerCase()
++function slugifyPath(s) {
++  return s.split("/").map(
++    (segment) => segment
++      .normalize("NFD")
++      .replace(/[\u0300-\u036f]/g, "")
++      .replace(/[đĐ]/g, "d")
++      .replace(/&/g, "-and-")
++      .replace(/%/g, "-percent")
++      .replace(/\?/g, "")
++      .replace(/#/g, "")
++      .replace(/[<>:\"|*]/g, "")
++      .replace(/\s+/g, "-")
++      .replace(/[-_.]+/g, (match) => {
++        if (match.includes("-") || match.includes("_")) return "-";
++        return match;
++      })
++      .replace(/^-+|-+$/g, "")
++      .toLowerCase()
+   ).join("/").replace(/\/$/, "");
+ }
+ function _sluggify(s4) {
+@@ -23069,8 +23084,7 @@ var callout_inline_default = 'function n(){let t=this.parentElement;t.classList.
  // src/scripts/checkbox.inline.ts
  var checkbox_inline_default = 'function c(e){return e.document.body.dataset.slug}var d=e=>`${c(window)}-checkbox-${e}`,l=()=>{document.querySelectorAll("input.checkbox-toggle").forEach((t,s)=>{let n=d(s),o=u=>{let r=u.target?.checked?"true":"false";localStorage.setItem(n,r)};t.addEventListener("change",o),window.addCleanup(()=>t.removeEventListener("change",o)),localStorage.getItem(n)==="true"&&(t.checked=!0)})};document.addEventListener("nav",l);document.addEventListener("render",l);\n';
  

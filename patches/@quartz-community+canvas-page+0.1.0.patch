@@ -1,0 +1,64 @@
+diff --git a/node_modules/@quartz-community/canvas-page/dist/components/index.js b/node_modules/@quartz-community/canvas-page/dist/components/index.js
+index 3f1994e..e1d36f6 100644
+--- a/node_modules/@quartz-community/canvas-page/dist/components/index.js
++++ b/node_modules/@quartz-community/canvas-page/dist/components/index.js
+@@ -77,9 +77,24 @@ function resolveRelative(current, target) {
+   const res = joinSegments(pathToRoot(current), simplifySlug(target));
+   return res;
+ }
+-function slugifyPath(s2) {
+-  return s2.split("/").map(
+-    (segment) => segment.replace(/\s/g, "-").replace(/&/g, "-and-").replace(/%/g, "-percent").replace(/\?/g, "").replace(/#/g, "").replace(/[<>:"|*]/g, "").toLowerCase()
++function slugifyPath(s) {
++  return s.split("/").map(
++    (segment) => segment
++      .normalize("NFD")
++      .replace(/[\u0300-\u036f]/g, "")
++      .replace(/[đĐ]/g, "d")
++      .replace(/&/g, "-and-")
++      .replace(/%/g, "-percent")
++      .replace(/\?/g, "")
++      .replace(/#/g, "")
++      .replace(/[<>:\"|*]/g, "")
++      .replace(/\s+/g, "-")
++      .replace(/[-_.]+/g, (match) => {
++        if (match.includes("-") || match.includes("_")) return "-";
++        return match;
++      })
++      .replace(/^-+|-+$/g, "")
++      .toLowerCase()
+   ).join("/").replace(/\/$/, "");
+ }
+ function normalizeHastElement(rawEl, curBase, newBase) {
+diff --git a/node_modules/@quartz-community/canvas-page/dist/index.js b/node_modules/@quartz-community/canvas-page/dist/index.js
+index e8e5f84..790fe5d 100644
+--- a/node_modules/@quartz-community/canvas-page/dist/index.js
++++ b/node_modules/@quartz-community/canvas-page/dist/index.js
+@@ -80,9 +80,24 @@ function resolveRelative(current, target) {
+   const res = joinSegments(pathToRoot(current), simplifySlug(target));
+   return res;
+ }
+-function slugifyPath(s2) {
+-  return s2.split("/").map(
+-    (segment) => segment.replace(/\s/g, "-").replace(/&/g, "-and-").replace(/%/g, "-percent").replace(/\?/g, "").replace(/#/g, "").replace(/[<>:"|*]/g, "").toLowerCase()
++function slugifyPath(s) {
++  return s.split("/").map(
++    (segment) => segment
++      .normalize("NFD")
++      .replace(/[\u0300-\u036f]/g, "")
++      .replace(/[đĐ]/g, "d")
++      .replace(/&/g, "-and-")
++      .replace(/%/g, "-percent")
++      .replace(/\?/g, "")
++      .replace(/#/g, "")
++      .replace(/[<>:\"|*]/g, "")
++      .replace(/\s+/g, "-")
++      .replace(/[-_.]+/g, (match) => {
++        if (match.includes("-") || match.includes("_")) return "-";
++        return match;
++      })
++      .replace(/^-+|-+$/g, "")
++      .toLowerCase()
+   ).join("/").replace(/\/$/, "");
+ }
+ function normalizeHastElement(rawEl, curBase, newBase) {
