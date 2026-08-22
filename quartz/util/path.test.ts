@@ -117,18 +117,18 @@ describe("transforms", () => {
         ["test.mp4", "test.mp4"],
         ["note with spaces.md", "note-with-spaces"],
         ["notes.with.dots.md", "notes.with.dots"],
-        ["test/special chars?.md", "special-chars"],
-        ["test/special chars #3.md", "special-chars-3"],
-        ["cool/what about r&d?.md", "what-about-r-and-d"],
+        ["test/special chars?.md", "test/special-chars"],
+        ["test/special chars #3.md", "test/special-chars-3"],
+        ["cool/what about r&d?.md", "cool/what-about-r-and-d"],
         // Obsidian "Folder Notes" convention: folder/folder.md is the folder's landing page
-        ["characters/characters.md", "characters"],
-        ["fiction/books/books.md", "books"],
-        ["a/a/a.md", "a"],
+        ["characters/characters.md", "characters/index"],
+        ["fiction/books/books.md", "fiction/books/index"],
+        ["a/a/a.md", "a/a/index"],
         // Top-level single-segment: NOT rewritten (parentFolder storage, out of scope)
         ["characters.md", "characters"],
         // Non-matching last two segments: no rewrite
-        ["characters/alice.md", "alice"],
-        ["characters/sub/characters.md", "characters"],
+        ["characters/alice.md", "characters/alice"],
+        ["characters/sub/characters.md", "characters/sub/characters"],
         // Folder literally named "index" is unaffected by the rewrite
         ["index/index.md", "index/index"],
         ["docs/index/index.md", "docs/index/index"],
@@ -140,13 +140,13 @@ describe("transforms", () => {
   })
 
   test("slugifyFilePath + simplifySlug end-to-end canonicalization", () => {
-    // Both folder-note conventions must produce clean user-facing URLs.
+    // Both folder-note conventions must produce identical user-facing URLs.
     const indexStyle = path.simplifySlug(path.slugifyFilePath("characters/index.md" as any))
     const folderNameStyle = path.simplifySlug(
       path.slugifyFilePath("characters/characters.md" as any),
     )
+    assert.strictEqual(indexStyle, folderNameStyle)
     assert.strictEqual(indexStyle, "characters/")
-    assert.strictEqual(folderNameStyle, "characters")
   })
 
   test("transformInternalLink", () => {
@@ -161,24 +161,24 @@ describe("transforms", () => {
         ["./index.md", "./"],
         ["./index.css", "./index.css"],
         ["content", "./content"],
-        ["content/test.md", "./test"],
+        ["content/test.md", "./content/test"],
         ["content/test.pdf", "./content/test.pdf"],
-        ["./content/test.md", "./test"],
-        ["../content/test.md", "../test"],
+        ["./content/test.md", "./content/test"],
+        ["../content/test.md", "../content/test"],
         ["tags/", "./tags/"],
         ["/tags/", "./tags/"],
-        ["content/with spaces", "./with-spaces"],
+        ["content/with spaces", "./content/with-spaces"],
         ["content/with spaces/index", "./content/with-spaces/"],
-        ["content/with spaces#and Anchor!", "./with-spaces#and-anchor"],
-        // Folder note convention
-        ["characters/characters", "./characters"],
-        ["My Folder/My Folder", "./my-folder"],
-        ["a/b/c/d/d", "./d"],
-        ["My Folder/My Folder#heading", "./my-folder#heading"],
-        // Non-matching last segments
-        ["characters/alice", "./alice"],
+        ["content/with spaces#and Anchor!", "./content/with-spaces#and-anchor"],
+        // Folder note convention: same-name parent triggers /index rewrite → folder path
+        ["characters/characters", "./characters/"],
+        ["My Folder/My Folder", "./my-folder/"],
+        ["a/b/c/d/d", "./a/b/c/d/"],
+        ["My Folder/My Folder#heading", "./my-folder/#heading"],
+        // Non-matching last segments: no folder rewrite
+        ["characters/alice", "./characters/alice"],
         // Percent-encoded spaces
-        ["My%20Folder/My%20Note", "./my-note"],
+        ["My%20Folder/My%20Note", "./my-folder/my-note"],
       ],
       path.transformInternalLink,
       (_x: string): _x is string => true,
@@ -244,29 +244,29 @@ describe("link strategies", () => {
 
     test("from a/b/c", () => {
       const cur = "a/b/c" as FullSlug
-      assert.strictEqual(path.transformLink(cur, "a/b/d", opts), "../../d")
+      assert.strictEqual(path.transformLink(cur, "a/b/d", opts), "../../a/b/d")
       assert.strictEqual(path.transformLink(cur, "a/b/index", opts), "../../a/b/")
-      assert.strictEqual(path.transformLink(cur, "e/f", opts), "../../f")
-      assert.strictEqual(path.transformLink(cur, "e/g/h", opts), "../../h")
+      assert.strictEqual(path.transformLink(cur, "e/f", opts), "../../e/f")
+      assert.strictEqual(path.transformLink(cur, "e/g/h", opts), "../../e/g/h")
       assert.strictEqual(path.transformLink(cur, "index", opts), "../../")
       assert.strictEqual(path.transformLink(cur, "index.png", opts), "../../index.png")
       assert.strictEqual(path.transformLink(cur, "index#abc", opts), "../../#abc")
-      assert.strictEqual(path.transformLink(cur, "tag/test", opts), "../../test")
-      assert.strictEqual(path.transformLink(cur, "a/b/c#test", opts), "../../c#test")
+      assert.strictEqual(path.transformLink(cur, "tag/test", opts), "../../tag/test")
+      assert.strictEqual(path.transformLink(cur, "a/b/c#test", opts), "../../a/b/c#test")
       assert.strictEqual(path.transformLink(cur, "a/test.png", opts), "../../a/test.png")
     })
 
     test("from a/b/index", () => {
       const cur = "a/b/index" as FullSlug
-      assert.strictEqual(path.transformLink(cur, "a/b/d", opts), "../../d")
-      assert.strictEqual(path.transformLink(cur, "a/b", opts), "../../b")
+      assert.strictEqual(path.transformLink(cur, "a/b/d", opts), "../../a/b/d")
+      assert.strictEqual(path.transformLink(cur, "a/b", opts), "../../a/b")
       assert.strictEqual(path.transformLink(cur, "index", opts), "../../")
     })
 
     test("from index", () => {
       const cur = "index" as FullSlug
       assert.strictEqual(path.transformLink(cur, "index", opts), "./")
-      assert.strictEqual(path.transformLink(cur, "a/b/c", opts), "./c")
+      assert.strictEqual(path.transformLink(cur, "a/b/c", opts), "./a/b/c")
       assert.strictEqual(path.transformLink(cur, "a/b/index", opts), "./a/b/")
     })
   })
@@ -325,22 +325,22 @@ describe("link strategies", () => {
         path.transformLink(cur, "../../../a/test.png", opts),
         "../../../a/test.png",
       )
-      assert.strictEqual(path.transformLink(cur, "../../../e/g/h", opts), "../../../h")
-      assert.strictEqual(path.transformLink(cur, "../../../e/g/h", opts), "../../../h")
-      assert.strictEqual(path.transformLink(cur, "../../../e/g/h#abc", opts), "../../../h#abc")
+      assert.strictEqual(path.transformLink(cur, "../../../e/g/h", opts), "../../../e/g/h")
+      assert.strictEqual(path.transformLink(cur, "../../../e/g/h", opts), "../../../e/g/h")
+      assert.strictEqual(path.transformLink(cur, "../../../e/g/h#abc", opts), "../../../e/g/h#abc")
     })
 
     test("from a/b/index", () => {
       const cur = "a/b/index" as FullSlug
       assert.strictEqual(path.transformLink(cur, "../../index", opts), "../../")
       assert.strictEqual(path.transformLink(cur, "../../", opts), "../../")
-      assert.strictEqual(path.transformLink(cur, "../../e/g/h", opts), "../../h")
+      assert.strictEqual(path.transformLink(cur, "../../e/g/h", opts), "../../e/g/h")
       assert.strictEqual(path.transformLink(cur, "c", opts), "./c")
     })
 
     test("from index", () => {
       const cur = "index" as FullSlug
-      assert.strictEqual(path.transformLink(cur, "e/g/h", opts), "./h")
+      assert.strictEqual(path.transformLink(cur, "e/g/h", opts), "./e/g/h")
       assert.strictEqual(path.transformLink(cur, "a/b/index", opts), "./a/b/")
     })
   })
