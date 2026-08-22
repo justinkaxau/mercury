@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-08-20
 ---
 
 Nghiên cứu DELTA (NCT06630637) là một thử nghiệm can thiệp tiến cứu, nhãn mở (open-label) trên một cá nhân ($N=1$, đối tượng DELTA001 / tác giả [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho|Dean Ho]], 45 tuổi), công bố trên tạp chí *PLOS ONE* vào tháng 8-2026. Trọng tâm của nghiên cứu là đánh giá và định lượng **khả năng phục hồi sinh học** (biological resilience) thông qua việc theo dõi quỹ đạo động học của các dấu ấn sinh học (biomarkers) trước và sau các tác nhân gây stress sinh lý chuẩn hóa (nhịn ăn, tập luyện), kết hợp can thiệp lối sống tổ hợp với các công nghệ sức khỏe số (thiết bị đeo theo dõi liên tục và trợ lý AI).
@@ -12,9 +13,9 @@ Các chỉ số tĩnh này bỏ lỡ khả năng thích ứng động của cơ 
 
 ```mermaid
 flowchart TD
-    A["Tác nhân gây stress hệ thống<br><i>(Nhịn ăn 48h / Vận động nặng)</i>"] --> B["Kích hoạt phản ứng chuyển hóa & sinh hóa trước stress"]
-    B --> C["Theo dõi quỹ đạo biến đổi biomarker<br>& động học hồi phục"]
-    C --> D["Định lượng năng lực phục hồi sinh học<br><b>(Biological Resilience Indicator - RI)</b>"]
+    A["Tác nhân gây stress hệ thống<br/>(Nhịn ăn 48h / Vận động nặng)"] --> B["Kích hoạt phản ứng chuyển hóa và sinh hóa trước stress"]
+    B --> C["Theo dõi quỹ đạo biến đổi biomarker<br/>và động học hồi phục"]
+    C --> D["Định lượng năng lực phục hồi sinh học<br/>(Biological Resilience Indicator - RI)"]
 ```
 
 ## 2. Giao thức can thiệp tổ hợp DELTA
@@ -49,8 +50,8 @@ Nghiên cứu khảo sát các chỉ số máu tại 3 trạng thái: trước n
 
 ```mermaid
 flowchart LR
-    A["<b>PRE48</b><br>Mức nền tối ưu"] -->|"Nhịn ăn 48h"| B["<b>POST48</b><br>Biến động sinh lý"]
-    B -->|"Ăn lại 2–3 ngày"| C["<b>POST-RF</b><br>Hồi phục mức nền"]
+    A["PRE48<br/>Mức nền tối ưu"] -->|"Nhịn ăn 48h"| B["POST48<br/>Biến động sinh lý"]
+    B -->|"Ăn lại 2–3 ngày"| C["POST-RF<br/>Hồi phục mức nền"]
 ```
 
 ### Apolipoprotein (ApoB, ApoA và tỷ lệ ApoB/ApoA)
@@ -156,4 +157,4 @@ Hệ thống GPT tùy chỉnh được tích hợp mô hình hồi quy bình ph�
 
 - [Bài báo nghiên cứu DELTA trên PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0354234): Wang P, Foo N, Su C, Leung NYT, Song SW, Seres G, et al. (2026) *DELTA: Strengthening human biological resilience with an N=1 digital health and dynamic biomarker protocol*. PLOS ONE 21(8): e0354234. 
 - [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho]]: Ghi chép hành trình thực nghiệm cá nhân và góc nhìn truyền thông đại chúng của tác giả Dean Ho.
-- [[Nghiên cứu DELTA - Bài 3. Thẩm định sự thật khoa học đằng sau con số trẻ hơn 15 tuổi]]: Báo cáo kiểm toán khoa học đa tầng và bóc tách suy luận truyền thông toàn diện về nghiên cứu DELTA.
+- [[Nghiên cứu DELTA - Bài 3. Thẩm định sự thật khoa học đằng sau con số trẻ hơn 15 tuổi]]: Báo cáo thẩm định khoa học đa tầng và bóc tách suy luận truyền thông toàn diện về nghiên cứu DELTA.
