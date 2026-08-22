@@ -1,11 +1,10 @@
 ---
 publish: true
-date: 2026-08-20
 ---
 
 [[Nghiên cứu DELTA - Bài 2. Bức tranh động học biomarker và năng lực phục hồi sinh học|DELTA]] là thử nghiệm nhãn mở trên một cá thể (N-of-1), trong đó Giáo sư [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho|Dean Ho]] vừa tham gia nghiên cứu vừa là đối tượng DELTA001. Giá trị chính của nghiên cứu nằm ở việc chứng minh tính khả thi khi theo dõi liên tục các dấu ấn sinh học động (biomarker) ở tần suất cao, trong bối cảnh cá nhân trải qua các tác nhân gây căng thẳng sinh lý có kiểm soát. Thiết kế này tạo ra dữ liệu cá nhân chi tiết, nhưng không chứng minh phác đồ đảo ngược lão hóa, kéo dài tuổi thọ hoặc phù hợp với cộng đồng.
 
-Sự sai lệch truyền thông hình thành khi thông cáo từ NUS Medicine nâng tầm các số liệu quan sát và kết quả thuật toán thành kết luận sức khỏe, sau đó Mothership tiếp tục khuếch đại bằng những tuyên bố mang tính nhân quả về việc 'đảo ngược lão hóa'. Trường hợp DELTA cho thấy một phát ngôn có thể bắt đầu từ phép đo đúng nhưng bị bóp méo khi bị thổi phồng qua từng tầng suy luận: từ quan sát, tương quan, sang nhân quả, trẻ hóa và kéo dài tuổi thọ mà không hề có bằng chứng đi kèm.
+Sự sai lệch truyền thông hình thành khi thông cáo từ NUS Medicine nâng tầm các số liệu quan sát và kết quả thuật toán thành kết luận sức khỏe, sau đó Mothership tiếp tục khuếch đại bằng những tuyên bố mang tính nhân quả về việc 'đảo ngược lão hóa'. Trường hợp DELTA cho thấy một phát ngôn có thể bắt đầu từ phép đo đúng nhưng bị bóp méo và thổi phồng qua từng tầng suy luận: từ quan sát, tương quan, sang nhân quả, trẻ hóa và kéo dài tuổi thọ mà không hề có bằng chứng đi kèm.
 
 ## 1. Kết luận thẩm định cốt lõi
 

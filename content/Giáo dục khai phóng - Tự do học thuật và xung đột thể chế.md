@@ -1,6 +1,5 @@
 ---
 publish: true
-date: 2026-08-20
 ---
 
 ## 1. Định nghĩa và bản chất cốt lõi
@@ -77,7 +76,7 @@ Biến cố đóng cửa phân hiệu Yale-NUS (2013-2025) thể hiện rõ gi�
 
 ### Tiêu chí bác bỏ của Karl Popper
 
-Theo [[Karl Popper]], ranh giới giữa **khoa học** và **ngụy khoa học / giáo điều** nằm ở khả năng bị bác bỏ (*Falsifiability*):
+Theo Karl Popper, ranh giới giữa **khoa học** và **ngụy khoa học / giáo điều** nằm ở khả năng bị bác bỏ (*Falsifiability*):
 
 - Tri thức khoa học chỉ mang tính chân lý tạm thời, luôn mở ra khả năng bị kiểm chứng, phản biện và thay thế bởi lý thuyết tốt hơn (như Thuyết Tương đối của Einstein mở rộng và thay thế cơ học cổ điển của Newton).
 - Mọi hệ thống tri thức tự nhận luôn đúng và cấm đoán tranh luận đều tự tước bỏ tư cách khoa học để trở thành giáo điều chính trị hoặc niềm tin tôn giáo.
