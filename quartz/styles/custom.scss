@@ -66,5 +66,44 @@ article {
   }
 }
 
+@media all and ($mobile) {
+  // 1. Hiện lại page-title trên mobile để click về Home
+  .page-title {
+    display: block !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap;
+    align-self: center;
 
+    a {
+      color: var(--secondary) !important;
+      text-decoration: none;
+    }
+  }
 
+  .page > #quartz-body .sidebar.left {
+    gap: 0.5rem !important;
+  }
+
+  // 2. Chống ngắt dòng sớm do text-wrap: pretty, cho chữ trải đều sang lề phải
+  p,
+  li,
+  ul,
+  ol {
+    text-wrap: wrap !important;
+  }
+
+  // 3. Tối ưu lề hiển thị nội dung trên mobile (16px mỗi bên)
+  .page > #quartz-body {
+    div.center,
+    footer {
+      min-width: 100% !important;
+      max-width: 100% !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      box-sizing: border-box !important;
+    }
+  }
+}
