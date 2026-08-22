@@ -46,9 +46,9 @@ Hiện tượng thiếu kỷ luật không phải là khiếm khuyết nhân cá
 
 ```mermaid
 flowchart TD
-    A["1. Gợi ý (Cue)"] --> B["2. Khao khát (Craving)"]
-    B --> C["3. Phản hồi (Response)"]
-    C --> D["4. Phần thưởng (Reward)"]
+    A["1 - Gợi ý (Cue)"] --> B["2 - Khao khát (Craving)"]
+    B --> C["3 - Phản hồi (Response)"]
+    C --> D["4 - Phần thưởng (Reward)"]
     D --> A
 ```
 
