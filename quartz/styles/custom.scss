@@ -40,3 +40,18 @@ blockquote {
   padding-left: 0.65rem !important;
   margin: 1.2rem 0;
 }
+
+article {
+  & > h2 {
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--lightgray);
+  }
+
+  & > h3 {
+    margin-top: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
