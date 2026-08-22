@@ -1,8 +1,45 @@
 diff --git a/node_modules/@quartz-community/bases-page/dist/chunk-Y4KGLVLV.js b/node_modules/@quartz-community/bases-page/dist/chunk-Y4KGLVLV.js
-index 4743197..bb5cc81 100644
+index 4743197..0534ca9 100644
 --- a/node_modules/@quartz-community/bases-page/dist/chunk-Y4KGLVLV.js
 +++ b/node_modules/@quartz-community/bases-page/dist/chunk-Y4KGLVLV.js
-@@ -811,9 +811,24 @@ function transformLink(src, target, opts) {
+@@ -688,18 +688,29 @@ function simplifySlug(fp) {
+ function slugifyFilePath(fp, excludeExt) {
+   fp = stripSlashes(fp);
+   const ext = getFileExtension(fp);
+-  const withoutFileExt = fp.replace(new RegExp(ext + "$"), "");
++  const withoutFileExt = fp.replace(new RegExp((ext ? ("\\" + ext) : "") + "$"), "");
+   const finalExt = excludeExt || [".md", ".html", void 0].includes(ext) ? "" : ext;
+-  let slug2 = _sluggify(withoutFileExt);
+-  if (endsWith(slug2, "_index")) {
+-    slug2 = slug2.replace(/_index$/, "index");
++  if ([".md", ".html", void 0].includes(ext)) {
++    const parts = withoutFileExt.split("/");
++    const lastSegment = parts[parts.length - 1];
++    if (lastSegment === "index" || lastSegment === "_index") {
++      if (parts.length > 1) {
++        return _sluggify(parts.slice(0, -1).join("/")) + "/index";
++      }
++      return "index";
++    }
++    return _sluggify(lastSegment);
++  }
++  let slug = _sluggify(withoutFileExt);
++  if (endsWith(slug, "_index")) {
++    slug = slug.replace(/_index$/, "index");
+   }
+-  const segments = slug2.split("/");
++  const segments = slug.split("/");
+   if (segments.length >= 2 && segments[segments.length - 1] === segments[segments.length - 2]) {
+     segments[segments.length - 1] = "index";
+-    slug2 = segments.join("/");
++    slug = segments.join("/");
+   }
+-  return slug2 + (finalExt ?? "");
++  return slug + (finalExt ?? "");
+ }
+ function joinSegments(...args) {
+   if (args.length === 0) {
+@@ -811,9 +822,24 @@ function transformLink(src, target, opts) {
      return joinSegments(pathToRoot(effectiveSrc), canonicalSlug) + folderTail;
    }
  }
