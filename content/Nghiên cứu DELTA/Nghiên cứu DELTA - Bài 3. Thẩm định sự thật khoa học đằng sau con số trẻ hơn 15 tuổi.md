@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-08-20
 ---
 
 [[Nghiên cứu DELTA - Bài 2. Bức tranh động học biomarker và năng lực phục hồi sinh học|DELTA]] là thử nghiệm nhãn mở trên một cá thể (N-of-1), trong đó Giáo sư [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho|Dean Ho]] vừa tham gia nghiên cứu vừa là đối tượng DELTA001. Nghiên cứu có giá trị chính trong việc chứng minh tính khả thi khi theo dõi liên tục các dấu ấn sinh học động (biomarker) ở tần suất cao, khi cá nhân trải qua các tác nhân gây căng thẳng sinh lý có kiểm soát. Thiết kế này tạo ra dữ liệu cá nhân chi tiết, nhưng không chứng minh phác đồ đảo ngược lão hóa, kéo dài tuổi thọ hoặc phù hợp với cộng đồng.
@@ -79,8 +80,7 @@ flowchart TD
     classDef default min-width:380px,text-align:left;
     A["<b>Gói can thiệp đa thành phần</b><br/>• TRE 20:4 & nhịn nước 48 giờ<br/>• Tập kháng lực, cardio và HIIT<br/>• Ăn kiểu Địa Trung Hải<br/>• Ngủ sớm và vệ sinh giấc ngủ<br/>• GPT Healthspan Copilot"] --> B["<b>Theo dõi dấu ấn sinh học động</b><br/>• Glucose, ketone và GKI<br/>• ApoB, ApoA1, hs-CRP và homocysteine<br/>• Thiết bị Apple Watch và Garmin<br/>• Hệ vi sinh 16S rRNA<br/>• Mô hình OLS tính tuổi sinh học"]
     B --> C["<b>Quan sát trên một cá thể (N-of-1)</b><br/>• Quỹ đạo biến thiên dấu ấn sinh học<br/>• Khả năng phục hồi cá nhân dưới stress"]
-    D["<b>Giới hạn suy luận</b><br/>• Không tách được từng can thiệp<br/>• Không chứng minh quan hệ nhân quả<br/>• Không chứng minh đảo ngược lão hóa<br/>• Không khái quát hóa cho cộng đồng"]
-    C --> D
+    C --> D["<b>Giới hạn suy luận</b><br/>• Không tách được từng can thiệp<br/>• Không chứng minh quan hệ nhân quả<br/>• Không chứng minh đảo ngược lão hóa<br/>• Không khái quát hóa cho cộng đồng"]
 ```
 
 | Thành phần             | Giao thức được mô tả                                                                                                                    |

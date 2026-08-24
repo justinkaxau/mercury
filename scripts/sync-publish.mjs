@@ -37,16 +37,17 @@ async function getMarkdownFiles(dir) {
  * Parses frontmatter and body from a markdown file content
  */
 function parseFrontmatter(content) {
-  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
+  const cleanContent = content.replace(/^\uFEFF/, "")
+  const match = cleanContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
   if (!match) {
-    return { frontmatter: {}, body: content, hasFrontmatter: false }
+    return { frontmatter: {}, body: cleanContent, hasFrontmatter: false }
   }
   try {
     const data = yaml.parse(match[1]) || {}
-    const body = content.slice(match[0].length)
+    const body = cleanContent.slice(match[0].length)
     return { frontmatter: data, body, hasFrontmatter: true }
   } catch {
-    return { frontmatter: {}, body: content, hasFrontmatter: false }
+    return { frontmatter: {}, body: cleanContent, hasFrontmatter: false }
   }
 }
 

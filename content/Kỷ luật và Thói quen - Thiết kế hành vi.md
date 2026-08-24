@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-06-08
 ---
 
 ## Kỷ luật là điều kiện tiên quyết của tự do

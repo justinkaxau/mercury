@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-08-16
 ---
 
 Dean Ho (47 tuổi), Giám đốc Viện Y học Kỹ thuật số (WisDM) tại NUS Medicine, đã tự biến mình thành đối tượng thử nghiệm trong một nghiên cứu về trường thọ bắt đầu từ giữa tháng 8-2024.
@@ -44,3 +45,4 @@ Dean Ho áp dụng các can thiệp lối sống, đồng thời sử dụng thi
 - [Thông cáo báo chí của NUS Medicine](https://medicine.nus.edu.sg/news/nus-medicine-professor-becomes-his-own-test-subject-in-longevity-study-biological-age-found-to-be-15-years-younger/)
 - [[Nghiên cứu DELTA - Bài 2. Bức tranh động học biomarker và năng lực phục hồi sinh học]]: Hồ sơ phân tích khoa học chi tiết về giao thức can thiệp, động học biomarker, hệ vi sinh và chỉ số phục hồi sinh học trong nghiên cứu DELTA (PLOS ONE 2026).
 - [[Nghiên cứu DELTA - Bài 3. Thẩm định sự thật khoa học đằng sau con số trẻ hơn 15 tuổi]]: Báo cáo thẩm định khoa học và bóc tách suy luận truyền thông toàn diện về nghiên cứu DELTA. 
+

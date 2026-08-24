@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-08-20
 ---
 
 ## 1. Định nghĩa và bản chất cốt lõi

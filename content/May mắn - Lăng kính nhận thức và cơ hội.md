@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-06-27
 ---
 
 ## Ý chính
@@ -14,8 +15,8 @@ Cảm giác xui xẻo kéo dài là một vòng lặp tâm lý tự củng cố,
 
 ```mermaid
 flowchart TD
-    A["1 - Biến cố tiêu cực"] --> B["2 - Nhận thức sai lệch\n(Quy kết ngoại cảnh + Thiên kiến xác nhận)"]
-    B --> C["3 - Tâm lý phòng thủ\n(Lo âu + Ngộp áp lực)"]
+    A["1 - Biến cố tiêu cực"] --> B["2 - Nhận thức sai lệch<br/>(Quy kết ngoại cảnh + Thiên kiến xác nhận)"]
+    B --> C["3 - Tâm lý phòng thủ<br/>(Lo âu + Ngộp áp lực)"]
     C --> D["4 - Hành vi vụng về & Quyết định sai"]
     D --> E["5 - Thất bại thực tế"]
     E -- "Củng cố định kiến xui xẻo" --> B
@@ -61,7 +62,7 @@ Muốn gia tăng may mắn, trọng tâm là thay đổi cấu trúc nhận th�
 
 ```mermaid
 flowchart TD
-    A["1 - Tâm thế thư thái\n(Mở rộng tầm nhìn bao quát)"] --> B["2 - Nhận diện tín hiệu & Cơ hội mới"]
+    A["1 - Tâm thế thư thái<br/>(Mở rộng tầm nhìn bao quát)"] --> B["2 - Nhận diện tín hiệu & Cơ hội mới"]
     B --> C["3 - Hành động thử nghiệm liên tục"]
     C --> D["4 - Tăng xác suất đạt kết quả tốt"]
     D --> E["5 - Định khung tích cực trước biến cố xấu"]

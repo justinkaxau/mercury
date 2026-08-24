@@ -1,5 +1,6 @@
 ---
 publish: true
+date: 2026-08-20
 ---
 
 Nghiên cứu DELTA (NCT06630637) là một thử nghiệm can thiệp tiến cứu, nhãn mở (open-label) trên một cá nhân ($N=1$, đối tượng DELTA001 / tác giả [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho|Dean Ho]], 45 tuổi), công bố trên tạp chí *PLOS ONE* vào tháng 8-2026. Trọng tâm của nghiên cứu là đánh giá và định lượng **khả năng phục hồi sinh học** (biological resilience) bằng cách theo dõi quỹ đạo động học của các dấu ấn sinh học (biomarkers) trước và sau các tác nhân gây stress sinh lý chuẩn hóa (nhịn ăn, tập luyện), kết hợp can thiệp lối sống tổ hợp với các công nghệ sức khỏe số (thiết bị đeo theo dõi liên tục và trợ lý AI).
