@@ -95,4 +95,4 @@ Lưu ý thể trạng: các vị ấm nóng như gừng, quế chi không nên l
 
 ## Liên kết liên quan
 
-- [[Vảy nến — Cơ chế miễn dịch và hướng kiểm soát]] - note sức khỏe liên quan đến cơ chế miễn dịch và hướng kiểm soát.
+- [[Vảy nến - Cơ chế miễn dịch và hướng kiểm soát]] - note sức khỏe liên quan đến cơ chế miễn dịch và hướng kiểm soát.

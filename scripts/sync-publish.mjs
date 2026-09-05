@@ -4,9 +4,35 @@ import yaml from "yaml"
 
 const WIKI_DIR = path.resolve("D:/Workspace/Obsidian/Neural Chamber/02_Wiki")
 const PUBLISH_DIR = path.resolve("D:/Workspace/Obsidian/Neural Chamber/Publish")
+const PUBLISH_ASSETS_DIR = path.join(PUBLISH_DIR, "assets")
 
 // Files in Publish that should NEVER be pruned or overwritten
-const PROTECTED_FILES = new Set(["index.md"])
+const PROTECTED_FILES = new Set(["index.md", "assets/.gitkeep"])
+
+// Supported asset extensions
+const ASSET_EXTENSIONS = new Set([
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".gif",
+  ".webp",
+  ".svg",
+  ".bmp",
+  ".ico",
+  ".tiff",
+  ".jxl",
+  ".pdf",
+  ".mp4",
+  ".webm",
+])
+
+/**
+ * Checks whether a filename has a supported asset extension
+ */
+function isAssetFile(filename) {
+  const ext = path.extname(filename).toLowerCase()
+  return ASSET_EXTENSIONS.has(ext)
+}
 
 /**
  * Recursively find all .md files in a directory
@@ -25,6 +51,31 @@ async function getMarkdownFiles(dir) {
       if (entry.isDirectory()) {
         await scan(fullPath)
       } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        results.push(fullPath)
+      }
+    }
+  }
+  await scan(dir)
+  return results
+}
+
+/**
+ * Recursively find all asset files in a directory
+ */
+async function getAssetFiles(dir) {
+  const results = []
+  async function scan(currentDir) {
+    let entries
+    try {
+      entries = await fs.readdir(currentDir, { withFileTypes: true })
+    } catch {
+      return
+    }
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name)
+      if (entry.isDirectory()) {
+        await scan(fullPath)
+      } else if (entry.isFile() && isAssetFile(entry.name)) {
         results.push(fullPath)
       }
     }
@@ -99,6 +150,62 @@ function transformContent(frontmatter, body) {
   return `---\n${yamlStr}\n---\n\n${cleanBody.trimStart()}`
 }
 
+/**
+ * Extracts asset references (wikilink embeds and markdown images) from body text
+ */
+function extractAssetReferences(body) {
+  const refs = new Set()
+
+  // 1. Wikilink embeds: ![[image.png]] or ![[image.png|500]] or ![[assets/image.png|alt|500]]
+  const wikilinkRegex = /!\[\[([^\]|#\r\n]+)(?:[|#][^\]\r\n]*)?\]\]/g
+  let match
+  while ((match = wikilinkRegex.exec(body)) !== null) {
+    const rawTarget = match[1].trim()
+    if (isAssetFile(rawTarget)) {
+      refs.add(rawTarget)
+    }
+  }
+
+  // 2. Standard markdown images: ![alt](path/to/image.png)
+  const mdImageRegex = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+["'][^"']*["'])?\)/g
+  while ((match = mdImageRegex.exec(body)) !== null) {
+    const rawTarget = match[2].trim()
+    // Ignore external URLs or data URIs
+    if (/^(https?:|\/\/|data:)/i.test(rawTarget)) continue
+    if (isAssetFile(rawTarget)) {
+      refs.add(rawTarget)
+    }
+  }
+
+  return Array.from(refs)
+}
+
+/**
+ * Copies an asset from source to destination if changed or missing
+ * Returns true if copied, false if unchanged
+ */
+async function copyAssetIfChanged(srcFullPath, destFullPath) {
+  try {
+    const srcStat = await fs.stat(srcFullPath)
+    const destStat = await fs.stat(destFullPath)
+    if (srcStat.size === destStat.size) {
+      const [srcBuf, destBuf] = await Promise.all([
+        fs.readFile(srcFullPath),
+        fs.readFile(destFullPath),
+      ])
+      if (srcBuf.equals(destBuf)) {
+        return false
+      }
+    }
+  } catch {
+    // Destination does not exist
+  }
+
+  await fs.mkdir(path.dirname(destFullPath), { recursive: true })
+  await fs.copyFile(srcFullPath, destFullPath)
+  return true
+}
+
 async function main() {
   console.log("🚀 Bắt đầu đồng bộ từ 02_Wiki sang Publish...\n")
 
@@ -113,10 +220,23 @@ async function main() {
     publishFileMap.set(base, rel)
   }
 
+  // Index all asset files in 02_Wiki for fast lookup
+  const allWikiAssets = await getAssetFiles(WIKI_DIR)
+  const wikiAssetMap = new Map()
+  for (const assetPath of allWikiAssets) {
+    const base = path.basename(assetPath)
+    wikiAssetMap.set(base, assetPath)
+  }
+
   const generatedPublishRelPaths = new Set()
-  let updatedCount = 0
-  let createdCount = 0
-  let skippedCount = 0
+  const usedAssetBaseNames = new Set()
+
+  let noteUpdatedCount = 0
+  let noteCreatedCount = 0
+  let noteSkippedCount = 0
+
+  let assetCopiedCount = 0
+  let assetUnchangedCount = 0
 
   for (const wikiFile of wikiFiles) {
     const content = await fs.readFile(wikiFile, "utf-8")
@@ -150,36 +270,91 @@ async function main() {
       } catch {}
 
       if (isSame) {
-        skippedCount++
+        noteSkippedCount++
       } else {
         const exists = publishFileMap.has(baseName)
         await fs.mkdir(path.dirname(targetFullPath), { recursive: true })
         await fs.writeFile(targetFullPath, transformed, "utf-8")
         if (exists) {
-          console.log(`✏️  Đã cập nhật: ${targetRelPath}`)
-          updatedCount++
+          console.log(`✏️  Đã cập nhật note: ${targetRelPath}`)
+          noteUpdatedCount++
         } else {
-          console.log(`✨ Đã tạo mới: ${targetRelPath}`)
-          createdCount++
+          console.log(`✨ Đã tạo mới note: ${targetRelPath}`)
+          noteCreatedCount++
+        }
+      }
+
+      // Extract and resolve images/assets used in this note
+      const assetRefs = extractAssetReferences(body)
+      for (const ref of assetRefs) {
+        const assetBaseName = path.basename(ref)
+        usedAssetBaseNames.add(assetBaseName)
+
+        // Find source path in 02_Wiki
+        let srcAssetPath = null
+        // 1. Direct path relative to wikiFile or WIKI_DIR
+        const candidate1 = path.resolve(path.dirname(wikiFile), ref)
+        const candidate2 = path.resolve(WIKI_DIR, ref)
+        try {
+          await fs.access(candidate1)
+          srcAssetPath = candidate1
+        } catch {
+          try {
+            await fs.access(candidate2)
+            srcAssetPath = candidate2
+          } catch {
+            // 2. Look up by basename in wiki assets index
+            if (wikiAssetMap.has(assetBaseName)) {
+              srcAssetPath = wikiAssetMap.get(assetBaseName)
+            }
+          }
+        }
+
+        if (srcAssetPath) {
+          const destAssetPath = path.join(PUBLISH_ASSETS_DIR, assetBaseName)
+          const copied = await copyAssetIfChanged(srcAssetPath, destAssetPath)
+          if (copied) {
+            console.log(`🖼️  Đã sao chép ảnh: assets/${assetBaseName}`)
+            assetCopiedCount++
+          } else {
+            assetUnchangedCount++
+          }
+        } else {
+          console.warn(`⚠️  Cảnh báo: Không tìm thấy ảnh "${ref}" được tham chiếu trong [${baseName}]`)
         }
       }
     }
   }
 
-  // Prune deleted/unpublished files
-  let deletedCount = 0
+  // Prune unreferenced asset files in Publish/assets
+  let assetDeletedCount = 0
+  const existingPublishAssets = await getAssetFiles(PUBLISH_ASSETS_DIR)
+  for (const assetFile of existingPublishAssets) {
+    const base = path.basename(assetFile)
+    const rel = path.relative(PUBLISH_DIR, assetFile).replace(/\\/g, "/")
+    if (PROTECTED_FILES.has(rel)) continue
+
+    if (!usedAssetBaseNames.has(base)) {
+      await fs.unlink(assetFile)
+      console.log(`🗑️  Đã gỡ bỏ ảnh không dùng: ${rel}`)
+      assetDeletedCount++
+    }
+  }
+
+  // Prune deleted/unpublished markdown files
+  let noteDeletedCount = 0
   for (const file of existingPublishFiles) {
     const rel = path.relative(PUBLISH_DIR, file).replace(/\\/g, "/")
     if (PROTECTED_FILES.has(rel)) continue
 
     if (!generatedPublishRelPaths.has(rel)) {
       await fs.unlink(file)
-      console.log(`🗑️  Đã gỡ bỏ: ${rel}`)
-      deletedCount++
+      console.log(`🗑️  Đã gỡ bỏ note: ${rel}`)
+      noteDeletedCount++
     }
   }
 
-  // Clean empty folders in Publish
+  // Clean empty folders in Publish (excluding assets if preserved)
   async function cleanEmptyDirs(dir) {
     let entries
     try {
@@ -191,10 +366,12 @@ async function main() {
       if (entry.isDirectory()) {
         const subDir = path.join(dir, entry.name)
         await cleanEmptyDirs(subDir)
-        const remaining = await fs.readdir(subDir)
-        if (remaining.length === 0) {
-          await fs.rmdir(subDir)
-        }
+        try {
+          const remaining = await fs.readdir(subDir)
+          if (remaining.length === 0) {
+            await fs.rmdir(subDir)
+          }
+        } catch {}
       }
     }
   }
@@ -202,10 +379,15 @@ async function main() {
 
   console.log("\n=================================")
   console.log(`🎉 Hoàn tất đồng bộ:`)
-  console.log(`   - Tạo mới:   ${createdCount}`)
-  console.log(`   - Cập nhật:  ${updatedCount}`)
-  console.log(`   - Không đổi: ${skippedCount}`)
-  console.log(`   - Gỡ bỏ:     ${deletedCount}`)
+  console.log(`   📝 Note:`)
+  console.log(`      - Tạo mới:    ${noteCreatedCount}`)
+  console.log(`      - Cập nhật:   ${noteUpdatedCount}`)
+  console.log(`      - Không đổi:  ${noteSkippedCount}`)
+  console.log(`      - Gỡ bỏ:      ${noteDeletedCount}`)
+  console.log(`   🖼️  Hình ảnh & Tệp đính kèm:`)
+  console.log(`      - Sao chép:   ${assetCopiedCount}`)
+  console.log(`      - Không đổi:  ${assetUnchangedCount}`)
+  console.log(`      - Gỡ bỏ:      ${assetDeletedCount}`)
   console.log("=================================\n")
 }
 

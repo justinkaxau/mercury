@@ -98,6 +98,6 @@ Một môi trường kiểm soát tư tưởng hoàn toàn có thể đào tạo
 
 ## Liên kết liên quan
 
-- [[Think Tank — So sánh mô hình Trung Quốc, Mỹ và Việt Nam]] - Đối chiếu vị thế của giới trí thức và phản biện chính sách giữa thể chế mở và thể chế tập quyền.
+- [[Think Tank - So sánh mô hình Trung Quốc, Mỹ và Việt Nam]] - Đối chiếu vị thế của giới trí thức và phản biện chính sách giữa thể chế mở và thể chế tập quyền.
 - [[Pháp gia - Thiết kế quyền lực và giới hạn pháp trị]] - Nguồn gốc tư tưởng biến con người thành công cụ phụng sự nhà nước và kiểm soát xã hội.
-- [[Triều Tiên — Nhà nước toàn trị và xã hội bị kiểm soát]] - Mô hình cực đoan về độc quyền chân lý và triệt tiêu hoàn toàn tự do tư tưởng.
+- [[Triều Tiên - Nhà nước toàn trị và cơ chế kiểm soát]] - Mô hình cực đoan về độc quyền chân lý và triệt tiêu hoàn toàn tự do tư tưởng.
