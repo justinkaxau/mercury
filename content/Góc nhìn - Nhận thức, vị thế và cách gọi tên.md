@@ -72,3 +72,4 @@ Thế giới xung quanh vận hành dựa trên lăng kính tiếp nhận hơn l
 
 - [[May mắn - Lăng kính nhận thức và cơ hội]] - Cùng logic về lăng kính nhận thức, thiên kiến xác nhận và mở rộng vùng chú ý.
 - [[Kỷ luật và Thói quen - Thiết kế hành vi]] - Thiết kế hệ thống hành động và môi trường thay vì phụ thuộc vào cảm xúc và ý chí tự trách.
+- [[Phép chiếu Equal Earth - Bảo toàn diện tích và tranh luận bản đồ thế giới]] - Minh chứng thực tế về cơ chế đóng khung thị giác và xung đột vị thế khi diễn giải hiện thực không gian.
