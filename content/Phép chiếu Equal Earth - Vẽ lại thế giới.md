@@ -8,16 +8,16 @@ Equal Earth là phép chiếu giả hình trụ bảo toàn diện tích. Phép 
 
 ```mermaid
 flowchart TD
-    A[Mặt cầu Trái Đất 3D] --> B[Trải lên mặt phẳng bắt buộc tạo biến dạng]
-    B -->|Ưu tiên góc và đường đi theo góc la bàn| C[Mercator và Web Mercator<br>Phóng đại diện tích ở vĩ độ cao]
-    B -->|Ưu tiên diện tích với khung hình chữ nhật| D[Gall-Peters<br>Biến dạng hình dạng rõ rệt]
-    B -->|Ưu tiên diện tích với kinh tuyến cong| E[Equal Earth<br>Hình dạng tổng thể cân bằng hơn]
-    E --> F[LHQ 2026 khuyến khích phép chiếu bảo toàn diện tích<br>Trong giáo dục, truyền thông và so sánh quy mô]
+    A[Mặt cầu Trái Đất 3D] --> B[Chiếu lên mặt phẳng tất yếu gây biến dạng]
+    B -->|Giữ góc la bàn| C[Mercator<br>Phóng đại diện tích ở vĩ độ cao]
+    B -->|Giữ diện tích khung chữ nhật| D[Gall-Peters<br>Biến dạng hình dạng rõ rệt]
+    B -->|Giữ diện tích kinh tuyến cong| E[Equal Earth<br>Hình dạng tổng thể cân bằng hơn]
+    E --> F[Khuyến nghị của LHQ 2026<br>Ứng dụng trong giáo dục và truyền thông]
 ```
 
-## 1. Nền tảng thiết kế và cơ chế toán học
+## 1. Nguyên lý thiết kế
 
-Năm 2018, Bojan Šavrič của Esri, Tom Patterson của Cục Công viên Quốc gia Hoa Kỳ và Bernhard Jenny của Đại học Monash giới thiệu Equal Earth. Họ muốn tạo một bản đồ thế giới vừa bảo toàn diện tích, vừa có hình thức thẩm mỹ gần với phép chiếu Robinson vốn quen thuộc và dễ tiếp nhận. Khác với Equal Earth, Robinson không bảo toàn diện tích.
+Năm 2018, nhóm nhà bản đồ học Bojan Šavrič, Tom Patterson và Bernhard Jenny giới thiệu phép chiếu Equal Earth. Họ muốn tạo một bản đồ thế giới vừa bảo toàn diện tích, vừa có hình thức thẩm mỹ hài hòa tương tự phép chiếu Robinson - một phép chiếu thỏa hiệp (compromise projection) từng rất phổ biến trong giáo dục và truyền thông nhờ thị giác cân đối, nhưng không bảo toàn diện tích.
 
 ### Cơ chế bảo toàn diện tích
 
@@ -36,20 +36,18 @@ Nếu vùng A có diện tích thực gấp 5 lần vùng B thì phần hình ch
 - **Vĩ tuyến:** Là các đường thẳng nằm ngang song song. Khoảng cách giữa chúng thay đổi theo vĩ độ để duy trì điều kiện bảo toàn diện tích.
 - **Kinh tuyến:** Kinh tuyến trung tâm là đường thẳng; các kinh tuyến còn lại uốn cong đối xứng về hai phía.
 - **Hai cực:** Hai đoạn thẳng ngắn biểu diễn hai cực, tránh độ phóng đại vô hạn ở vùng cực như trên Mercator.
-- **Đường biên ngoài:** Đường cong gợi hình cầu giúp các lục địa ở rìa dễ nhận biết hơn so với các phép chiếu bảo toàn diện tích dạng hình chữ nhật.
+- **Đường viền bo cong:** Hai mép biên uốn cong theo dáng quả địa cầu, giúp các vùng đất ở sát rìa không bị kéo bẹt như trên bản đồ hình chữ nhật.
 
 ### Sự đánh đổi không thể tránh khỏi
 
-Theorema Egregium của Carl Friedrich Gauss chứng minh rằng độ cong nội tại của một bề mặt được bảo toàn qua phép đẳng cự. Vì mặt cầu có độ cong Gaussian dương ($K > 0$) còn mặt phẳng có độ cong bằng 0 ($K = 0$), không thể trải mặt cầu lên mặt phẳng bằng một ánh xạ vừa liên tục vừa bảo toàn trọn vẹn khoảng cách cục bộ.
-
-Trong thực hành bản đồ học, điều này dẫn đến sự đánh đổi giữa 4 thuộc tính cơ bản:
+Về mặt toán học, nhà toán học Carl Friedrich Gauss từng chứng minh một nguyên lý bất biến: không có cách nào trải một mặt cầu lên mặt phẳng mà không làm biến dạng bề mặt. Nỗ lực đưa Trái Đất lên mặt phẳng cũng giống như cố ép dẹt một quả bóng: nó bắt buộc phải méo mó ở một khía cạnh nào đó. Trong bản đồ học, điều này dẫn đến sự đánh đổi không thể tránh khỏi giữa 4 thuộc tính cơ bản:
 
 1. Diện tích
 2. Hình dạng và góc cục bộ
 3. Khoảng cách
 4. Phương hướng hoặc phương vị
 
-Không có phép chiếu phẳng nào giữ chính xác tất cả các thuộc tính trên cho toàn cầu. Equal Earth ưu tiên tuyệt đối diện tích, đổi lại hình dạng, khoảng cách và góc bị biến dạng, đặc biệt ở rìa bản đồ và vùng vĩ độ cao. Ở hai cực, cực Nam được biểu diễn thành một đoạn thẳng nằm ngang giúp giữ đúng tỷ lệ diện tích của lục địa Nam Cực, nhưng phải đánh đổi hình dạng thực tế của khối băng ôm trọn cực.
+Trong sự đánh đổi đó, Equal Earth chọn bảo toàn diện tích làm ưu tiên cốt lõi, chấp nhận biến dạng hình dạng và khoảng cách ở vùng rìa lẫn vĩ độ cao. Rõ thấy nhất là ở hai cực: thay vì thu về một điểm như trên địa cầu, cả hai cực bị kéo thành hai đường thẳng nằm ngang, khiến lục địa Nam Cực bị dàn phẳng thành một dải dài dưới đáy bản đồ.
 
 ![[Mercato-vs-EqualEarth.jpg]]
 
@@ -130,7 +128,7 @@ Bản đồ không thuần túy là công cụ hình học; cách thể hiện k
 Hoa Kỳ là quốc gia duy nhất bỏ phiếu chống trong số 171 nước tham gia, xuất phát từ nỗi lo về một chuỗi tiền lệ pháp lý:
 
 - **Nỗi lo tiền lệ bồi thường thuộc địa:** Về toán học, Mỹ không phủ nhận Mercator bóp méo diện tích. Nhưng Washington lo ngại nghị quyết này là bước đệm cho các yêu sách bồi thường thời kỳ thuộc địa (vốn đang được Liên minh châu Phi đẩy mạnh). Nếu thừa nhận bản đồ cũ làm sai lệch vị thế lịch sử của châu Phi, phương Tây sẽ tự tạo ra tiền lệ pháp lý để các nước này đòi bồi thường tài chính sau này. Bỏ phiếu chống là cách Mỹ chặn đứng chuỗi yêu sách từ bước đầu tiên.
-- **Thế kẹt của 6 phiếu trắng:** Sáu quốc gia bỏ phiếu trắng (Ukraine, Estonia, Lithuania, Georgia, Moldova, Serbia) đều phụ thuộc lớn vào viện trợ của phương Tây. Họ rơi vào thế kẹt ngoại giao: không thể bỏ phiếu chống cùng Mỹ trước một đề xuất nhận được sự đồng thuận lớn về tính công bằng trong biểu đạt bản đồ, nhưng cũng không thể bỏ phiếu thuận để làm mất lòng đồng minh bảo trợ an ninh then chốt.
+- **Thế kẹt của 6 phiếu trắng:** Sáu quốc gia bỏ phiếu trắng (Ukraine, Estonia, Lithuania, Georgia, Moldova, Serbia) đều có những ràng buộc chiến lược riêng: họ vừa chịu sức ép không đi ngược lại lập trường của Mỹ và các đồng minh phương Tây, vừa cực kỳ thận trọng trước bất kỳ tiền lệ nào có thể ảnh hưởng đến các tranh chấp chủ quyền và toàn vẹn lãnh thổ của chính mình.
 
 #### 3. Tách biệt công thức toán học và dữ liệu biên giới
 
