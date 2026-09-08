@@ -153,3 +153,17 @@ article {
     flex-grow: 0 !important;
   }
 }
+
+// Medium-zoom lightbox overlay & cursor
+.medium-zoom-overlay {
+  z-index: 1000;
+}
+
+.medium-zoom-image--opened {
+  z-index: 1001;
+}
+
+article img:not(a img):not(.no-zoom) {
+  cursor: zoom-in;
+}
+
