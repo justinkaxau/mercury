@@ -124,6 +124,6 @@ Tuy nhiên, giới hạn này không làm mất giá trị của hướng can th
 
 ## Liên kết liên quan
 
-- [[Khủng hoảng mức sinh Đông Á - Áp lực giáo dục và thị trường hôn nhân]] - Phân tích hai động lực cấu trúc bổ sung cho bài toán giá nhà: cối xay giáo dục tại Hàn Quốc và thị trường hóa hôn nhân, sính lễ tại Trung Quốc.
+- [[Khủng hoảng mức sinh Đông Á - Gánh nặng lập gia đình và nuôi dạy con]] - Phân tích hai động lực cấu trúc bổ sung cho bài toán giá nhà: cối xay giáo dục tại Hàn Quốc và thị trường hóa hôn nhân, sính lễ tại Trung Quốc.
 - [[Chính sách thuế TNCN Việt Nam — Gánh nặng và cạnh tranh nhân tài]] - Phân tích sự bào mòn thu nhập của người làm công ăn lương do mức giảm trừ gia cảnh lạc hậu, làm suy yếu năng lực tích lũy tài chính để mua nhà và nuôi con.
-- [[Tập Cận Bình - Di sản lãnh đạo và cái giá của trỗi dậy]] - Góc nhìn về khủng hoảng nợ bất động sản, mô hình tăng trưởng dựa vào đất đai và suy thoái nhân khẩu học sâu sắc tại Trung Quốc.
+- [[Tập Cận Bình - Kỷ nguyên tập quyền và cái giá của sự trỗi dậy]] - Góc nhìn về khủng hoảng nợ bất động sản, mô hình tăng trưởng dựa vào đất đai và suy thoái nhân khẩu học sâu sắc tại Trung Quốc.

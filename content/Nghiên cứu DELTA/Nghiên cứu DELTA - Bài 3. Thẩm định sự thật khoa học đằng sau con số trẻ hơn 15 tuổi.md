@@ -200,6 +200,7 @@ DELTA chứng minh rằng việc theo dõi dữ liệu sinh học cá nhân liê
 
 ## Liên kết liên quan
 
+- [[Nhịn ăn gián đoạn - Cơ chế chuyển hóa và ranh giới bằng chứng]]: Tổng quan y văn về nhịn ăn gián đoạn, động học ketone, phân tầng bằng chứng và giải mã các ngộ nhận về autophagy, kéo dài tuổi thọ.
 - [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho]]: Bối cảnh tự thực nghiệm và hành trình theo dõi dữ liệu sinh học của Dean Ho.
 - [[Nghiên cứu DELTA - Bài 2. Bức tranh động học biomarker và năng lực phục hồi sinh học]]: Phân tích sâu về glucose, ketone, ApoB, hs-CRP, homocysteine và chỉ số phục hồi RI.
 

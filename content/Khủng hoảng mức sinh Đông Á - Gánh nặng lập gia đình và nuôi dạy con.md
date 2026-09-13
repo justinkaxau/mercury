@@ -97,4 +97,4 @@ Tại các đô thị Việt Nam, những áp lực tương tự đang dần hì
 ## Liên kết liên quan
 
 - [[Giá nhà và khủng hoảng mức sinh ở Việt Nam]] - Đối chiếu giữa tác động của giá nhà, tín dụng và chính sách đất đai tại Việt Nam với các rào cản giáo dục và hôn nhân ở Đông Á.
-- [[Tập Cận Bình - Di sản lãnh đạo và cái giá của trỗi dậy]] - Bối cảnh suy thoái nhân khẩu học, bất bình đẳng an sinh và các nút thắt cơ cấu kinh tế - xã hội của Trung Quốc thời kỳ hậu 2012.
+- [[Tập Cận Bình - Kỷ nguyên tập quyền và cái giá của sự trỗi dậy]] - Bối cảnh suy thoái nhân khẩu học, bất bình đẳng an sinh và các nút thắt cơ cấu kinh tế - xã hội của Trung Quốc thời kỳ hậu 2012.
