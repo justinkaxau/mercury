@@ -78,7 +78,7 @@ Khi nạp quá nhiều đường tự do, gan tăng cường tân tạo mỡ (de
 - **Kích hoạt phản ứng viêm toàn thân**: Viêm mạn tính phát sinh từ tình trạng dư thừa năng lượng kéo dài, tích tụ mỡ nội tạng và rối loạn lipid máu.
 - **Ngộ nhận về tính "chống viêm" hay "giải nhiệt"**: Quan niệm cho rằng đường mía thô "mát" hoặc kháng viêm nhờ vi chất trong mật rỉ là không có cơ sở thực nghiệm. Các thử nghiệm lâm sàng cho thấy ở cùng mức calo, các chỉ số viêm trong máu giữa nhóm dùng đường trắng và đường thô hoàn toàn không có sự khác biệt.
 
-Vì cả hai loại đường đều giải phóng lượng fructose và calo tương đương, gánh nặng đặt lên gan và hệ chuyển hóa là như nhau. Để cải thiện gan nhiễm mỡ và tình trạng kháng insulin, giải pháp cốt lõi là cắt giảm tổng lượng carbohydrate hấp thu nhanh và kiểm soát thời gian ăn uống, tương tự như các nguyên lý trong [[Nhịn ăn gián đoạn - Cơ chế chuyển hóa và ranh giới bằng chứng]].
+Vì cả hai loại đường đều giải phóng lượng fructose và calo tương đương, gánh nặng đặt lên gan và hệ chuyển hóa là như nhau. Để cải thiện gan nhiễm mỡ và tình trạng kháng insulin, giải pháp cốt lõi là cắt giảm tổng lượng carbohydrate hấp thu nhanh và kiểm soát thời gian ăn uống, tương tự như các nguyên lý trong [[Nhịn ăn gián đoạn - Hiệu quả thực tế và ngộ nhận autophagy]].
 
 ## Ăn bao nhiêu đường là an toàn?
 

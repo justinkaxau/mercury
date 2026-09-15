@@ -156,6 +156,6 @@ Hệ thống GPT tùy chỉnh được tích hợp mô hình hồi quy bình ph�
 ## Liên kết liên quan
 
 - [Bài báo nghiên cứu DELTA trên PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0354234): Wang P, Foo N, Su C, Leung NYT, Song SW, Seres G, et al. (2026) *DELTA: Strengthening human biological resilience with an N=1 digital health and dynamic biomarker protocol*. PLOS ONE 21(8): e0354234. 
-- [[Nhịn ăn gián đoạn - Cơ chế chuyển hóa và ranh giới bằng chứng]]: Nền tảng sinh lý học chuyển hóa (glycogen, ketone, bảo tồn protein) và ranh giới bằng chứng lâm sàng của nhịn ăn gián đoạn và nhịn ăn kéo dài.
+- [[Nhịn ăn gián đoạn - Hiệu quả thực tế và ngộ nhận autophagy]]: Nền tảng sinh lý học chuyển hóa (glycogen, ketone, bảo tồn protein) và ranh giới bằng chứng lâm sàng của nhịn ăn gián đoạn và nhịn ăn kéo dài.
 - [[Nghiên cứu DELTA - Bài 1. Từ câu chuyện tự thực nghiệm của Dean Ho]]: Ghi chép hành trình thực nghiệm cá nhân và góc nhìn truyền thông đại chúng của tác giả Dean Ho.
 - [[Nghiên cứu DELTA - Bài 3. Thẩm định sự thật khoa học đằng sau con số trẻ hơn 15 tuổi]]: Báo cáo thẩm định khoa học đa tầng và bóc tách suy luận truyền thông toàn diện về nghiên cứu DELTA.
