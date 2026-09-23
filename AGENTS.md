@@ -21,7 +21,7 @@ Mục tiêu: duy trì, tùy biến và triển khai website Quartz ổn định,
 
 ### `content/` - dữ liệu xuất bản (Downstream Content)
 
-- Là NTFS Junction trỏ trực tiếp tới `D:\Projects\Neural Chamber\Publish`.
+- Là NTFS Junction trỏ trực tiếp tới `D:\Projects\Neural Chamber\03_Publish`.
 - Đây là nội dung công khai một chiều từ `Neural Chamber`.
 - Không dùng `content/` để viết hay sửa nội dung các note tri thức (mọi cập nhật nội dung phải thực hiện từ phía `Neural Chamber`).
 - Chỉ sửa trực tiếp trong `content/` đối với các file đặc thù của website như `content/index.md` (trang chủ) hoặc trang giới thiệu không thuộc wiki.
