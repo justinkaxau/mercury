@@ -2,8 +2,8 @@ import fs from "node:fs/promises"
 import path from "node:path"
 import yaml from "yaml"
 
-const WIKI_DIR = path.resolve("D:/Workspace/Obsidian/Neural Chamber/02_Wiki")
-const PUBLISH_DIR = path.resolve("D:/Workspace/Obsidian/Neural Chamber/Publish")
+const WIKI_DIR = path.resolve("D:/Projects/Neural Chamber/02_Wiki")
+const PUBLISH_DIR = path.resolve("D:/Projects/Neural Chamber/Publish")
 const PUBLISH_ASSETS_DIR = path.join(PUBLISH_DIR, "assets")
 
 // Files in Publish that should NEVER be pruned or overwritten
@@ -320,7 +320,9 @@ async function main() {
             assetUnchangedCount++
           }
         } else {
-          console.warn(`⚠️  Cảnh báo: Không tìm thấy ảnh "${ref}" được tham chiếu trong [${baseName}]`)
+          console.warn(
+            `⚠️  Cảnh báo: Không tìm thấy ảnh "${ref}" được tham chiếu trong [${baseName}]`,
+          )
         }
       }
     }
